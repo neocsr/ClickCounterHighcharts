@@ -1,0 +1,24 @@
+<% title "Clicks" %>
+
+<table>
+  <tr>
+    <th>Banner</th>
+    <th>Ip Address</th>
+    <th>Publisher Key</th>
+    <th>Latitude</th>
+    <th>Longitud</th>
+  </tr>
+  <% for click in @clicks %>
+    <tr>
+      <td><%=h click.banner_id %></td>
+      <td><%=h click.ip_address %></td>
+      <td><%=h click.publisher_key %></td>
+      <td><%=h click.latitude %></td>
+      <td><%=h click.longitud %></td>
+      <td><%= link_to "Edit", edit_click_path(click) %></td>
+      <td><%= link_to "Destroy", click, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Click", new_click_path %></p>

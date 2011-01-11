@@ -1,0 +1,13 @@
+one:
+  banner_id: 1
+  ip_address: MyString
+  publisher_key: MyString
+  latitude: 1.5
+  longitud: 1.5
+
+two:
+  banner_id: 1
+  ip_address: MyString
+  publisher_key: MyString
+  latitude: 1.5
+  longitud: 1.5

@@ -1,0 +1,18 @@
+<% title "Banners" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Counter</th>
+  </tr>
+  <% for banner in @banners %>
+    <tr>
+      <td><%=h banner.name %></td>
+      <td><%=h banner.counter %></td>
+      <td><%= link_to "Edit", edit_banner_path(banner) %></td>
+      <td><%= link_to "Destroy", banner, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Banner", new_banner_path %></p>

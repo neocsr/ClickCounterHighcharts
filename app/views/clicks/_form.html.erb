@@ -1,0 +1,24 @@
+<% form_for @click do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :banner_id %><br />
+    <%= f.text_field :banner_id %>
+  </p>
+  <p>
+    <%= f.label :ip_address %><br />
+    <%= f.text_field :ip_address %>
+  </p>
+  <p>
+    <%= f.label :publisher_key %><br />
+    <%= f.text_field :publisher_key %>
+  </p>
+  <p>
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude %>
+  </p>
+  <p>
+    <%= f.label :longitud %><br />
+    <%= f.text_field :longitud %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
