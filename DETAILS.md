@@ -44,3 +44,14 @@ OPTIMIZE QUERIES
 `c = Click.all(:conditions => {:created_at => (1.week.ago.to_date)..(Date.today)}, :limit => 1)`
 > `SELECT * FROM "clicks" WHERE ("clicks"."created_at" BETWEEN '2011-01-05' AND '2011-01-12') LIMIT 1`
 
+
+CONSOLE TESTS
+=============
+
+    >> loud_logger
+    >> app.get '/'
+    >> quiet_logger
+    >> helper.click_series(Click, Date.today - 7)
+    >> banner = Banner.first
+    >> helper.click_series(banner.clicks, Date.today - 7)
+
