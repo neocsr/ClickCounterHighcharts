@@ -32,8 +32,9 @@
         name: 'Clicks',
         pointInterval: <%= 1.day * 1000 %>,
         pointStart: <%= 1.week.ago.to_i * 1000 %>,
-        pointEnd: <%= Time.now.to_i * 1000 %>,
-        data: <%= (1.week.ago.to_date..Date.today).map {|date| Click.total_on(date)}.inspect %>
+        pointEnd: <%= Date.today.to_time.to_i * 1000 %>,
+        //data: (1.week.ago.to_date..Date.today).map {|date| Click.total_on(date)}.inspect
+        data: <%= click_series(Click, 1.week.ago.to_date) %>
       }]
     });
   });
