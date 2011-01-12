@@ -6,6 +6,11 @@ class BannersControllerTest < ActionController::TestCase
     assert_template 'index'
   end
   
+  def test_show
+    get :show, :id => Banner.first
+    assert_template 'show'
+  end
+  
   def test_new
     get :new
     assert_template 'new'
@@ -20,7 +25,7 @@ class BannersControllerTest < ActionController::TestCase
   def test_create_valid
     Banner.any_instance.stubs(:valid?).returns(true)
     post :create
-    assert_redirected_to banners_url
+    assert_redirected_to banner_url(assigns(:banner))
   end
   
   def test_edit
@@ -37,7 +42,7 @@ class BannersControllerTest < ActionController::TestCase
   def test_update_valid
     Banner.any_instance.stubs(:valid?).returns(true)
     put :update, :id => Banner.first
-    assert_redirected_to banners_url
+    assert_redirected_to banner_url(assigns(:banner))
   end
   
   def test_destroy

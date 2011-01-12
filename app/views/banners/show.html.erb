@@ -1,4 +1,4 @@
-<% title "Banners" %>
+<% title "Banner" %>
 
 <script type="text/javascript" charset="utf-8">
   $(function() {
@@ -24,8 +24,8 @@
       },
       tooltip: {
         formatter: function() {
-          return Highcharts.dateFormat("%B %e, %Y", this.x) + ': ' + 
-                 Highcharts.numberFormat(this.y, 0) + ' clicks';
+         return Highcharts.dateFormat("%B %e, %Y", this.x) + ': ' + 
+                Highcharts.numberFormat(this.y, 0) + ' clicks';
         }
       },
       series: [{
@@ -33,7 +33,7 @@
         pointInterval: <%= 1.day * 1000 %>,
         pointStart: <%= 1.week.ago.to_i * 1000 %>,
         pointEnd: <%= Time.now.to_i * 1000 %>,
-        data: <%= (1.week.ago.to_date..Date.today).map {|date| Click.total_on(date)}.inspect %>
+        data: <%= (1.week.ago.to_date..Date.today).map {|date| @banner.clicks.total_on(date)}.inspect %>
       }]
     });
   });
@@ -42,20 +42,17 @@
 <div id="banner_chart" style="width:400px; height: 200px;"></div>
 <br />
 <br />
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Counter</th>
-  </tr>
-  <% for banner in @banners %>
-    <tr>
-      <td><%=h banner.name %></td>
-      <td><%=h banner.counter %></td>
-      <td><%= link_to "Show", banner %></td>
-      <td><%= link_to "Edit", edit_banner_path(banner) %></td>
-      <td><%= link_to "Destroy", banner, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<p>
+  <strong>Name:</strong>
+  <%=h @banner.name %>
+</p>
+<p>
+  <strong>Counter:</strong>
+  <%=h @banner.counter %>
+</p>
 
-<p><%= link_to "New Banner", new_banner_path %></p>
+<p>
+  <%= link_to "Edit", edit_banner_path(@banner) %> |
+  <%= link_to "Destroy", @banner, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", banners_path %>
+</p>
